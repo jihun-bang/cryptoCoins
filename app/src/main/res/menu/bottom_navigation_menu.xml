@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_menu_exchange"
+        android:enabled="true"
+        android:icon="@drawable/ic_exchange"
+        android:title="거래소"/>
+    <item
+        android:id="@+id/item_menu_service"
+        android:enabled="true"
+        android:icon="@drawable/ic_service"
+        android:title="상품/서비스"/>
+    <item
+        android:id="@+id/item_menu_asset"
+        android:enabled="true"
+        android:icon="@drawable/ic_asset"
+        android:title="자산현황"/>
+    <item
+        android:id="@+id/item_menu_deposit_withdraw"
+        android:enabled="true"
+        android:icon="@drawable/ic_deposit_withdraw"
+        android:title="입출금"/>
+    <item
+        android:id="@+id/item_menu_more"
+        android:enabled="true"
+        android:icon="@drawable/ic_more"
+        android:title="더보기"/>
+</menu>
