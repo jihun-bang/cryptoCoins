@@ -1,5 +1,6 @@
 package jihun.bang.cryptocoins.api
 
+import jihun.bang.cryptocoins.data.ImageModel
 import jihun.bang.cryptocoins.data.Market
 import jihun.bang.cryptocoins.data.Ticker
 import retrofit2.http.*
@@ -10,4 +11,9 @@ interface ExchangeApi {
 
     @GET("v1/ticker/")
     suspend fun getTickers(@Query("markets") markets: String): List<Ticker>
+}
+
+interface ImageApi {
+    @GET("api/coins.json")
+    suspend fun getImages(): List<ImageModel>
 }

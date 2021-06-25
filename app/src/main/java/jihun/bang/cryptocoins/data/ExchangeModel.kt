@@ -32,6 +32,9 @@ data class Ticker(
     val trade_time: String,
     val trade_time_kst: String,
     val trade_timestamp: Long,
-    val trade_volume: Double,
-    var imageUrl: String = ""
-)
+    val trade_volume: Double
+) {
+    fun getSymbol(): String {
+        return market.split('/')[1]
+    }
+}

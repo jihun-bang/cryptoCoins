@@ -3,6 +3,7 @@ package jihun.bang.cryptocoins.di
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import jihun.bang.cryptocoins.BuildConfig
 import jihun.bang.cryptocoins.api.ExchangeApi
+import jihun.bang.cryptocoins.api.ImageApi
 import jihun.bang.cryptocoins.viewModels.ExchangeViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -28,8 +29,24 @@ val networkModule = module {
             .build()
             .create(ExchangeApi::class.java)
     }
+    single {
+        Retrofit.Builder()
+            .baseUrl("https://static.coinpaper.io")
+            .client(OkHttpClient.Builder()
+                .apply {
+                    if (BuildConfig.DEBUG) {
+                        addNetworkInterceptor(
+                            HttpLoggingInterceptor().setLevel(
+                                HttpLoggingInterceptor.Level.BODY))
+                        addNetworkInterceptor(StethoInterceptor())
+                    }
+                }.build())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(ImageApi::class.java)
+    }
 }
 
 val viewModelModule = module {
-    viewModel { ExchangeViewModel(get()) }
+    viewModel { ExchangeViewModel(get(), get()) }
 }
